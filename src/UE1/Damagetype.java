@@ -3,7 +3,7 @@ package UE1;
 public enum Damagetype {
     SLASHING, PIERCING, BLUNT, MISSILE, NONE;
 
-    @Override
+    /*@Override
     public String toString() {
         if (Combattype.values().equals(SLASHING)){
             return "SLASHING";
@@ -15,5 +15,5 @@ public enum Damagetype {
             return "MISSILE";
         }
         return "NONE";
-    }
+    }*/
 }

@@ -1,5 +1,11 @@
 package UE1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Weapon {
     private String name;
     private Combattype cType;
@@ -17,6 +23,25 @@ public class Weapon {
         this.speed = speed;
         this.strength = strength;
         this.value = value;
+    }
+
+    public Weapon() {
+    }
+
+    public ArrayList<Weapon> fileReader(File file){
+        ArrayList<Weapon> list = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(file);
+            String line = scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                String[] split = line.split(";");
+                list.add(new Weapon(split[0], Combattype.valueOf(split[1]), Damagetype.valueOf(split[2]), Integer.parseInt(split[3]), Integer.parseInt(split[4]), Integer.parseInt(split[5]), Integer.parseInt(split[6])));
+            }
+        }catch (FileNotFoundException fnfe){
+            System.out.println("File not Found");
+        }
+        return list;
     }
 
     @Override
