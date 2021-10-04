@@ -19,6 +19,11 @@ public class Weapon {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return name+" "+cType.toString()+" "+dType.toString()+" "+damage+" "+speed+" "+strength+" "+value;
+    }
+
     public String getName() {
         return name;
     }
