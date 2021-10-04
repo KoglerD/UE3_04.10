@@ -1,5 +1,7 @@
 package UE1;
 
+import java.util.ArrayList;
+
 public interface Printable {
-    public void print(Weapon weapon);
+    public void print(ArrayList<Weapon> weapon);
 }
