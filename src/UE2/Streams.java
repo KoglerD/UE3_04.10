@@ -42,42 +42,43 @@ public class Streams {
         List<String> list = (List<String>) stream.map(o -> o.toString().toUpperCase()).collect(Collectors.toList());
         return list;
     }
-    /*public Weapon findWeaponWithLowestDamage(List<Weapon> weapons) {
+    public Weapon findWeaponWithLowestDamage(List<Weapon> weapons) {
+        return new Weapon();
     }
 
     public Weapon findWeaponWithHighestStrength(List<Weapon> weapons) {
-        //implement this
+        return new Weapon();
     }
 
     public List<Weapon> collectMissileWeapons(List<Weapon> weapons) {
-        //implement this
+        return weapons;
     }
 
     public Weapon findWeaponWithLongestName(List<Weapon> weapons) {
-        //implement this
+        return new Weapon();
     }
 
     public List<String> toNameList(List<Weapon> weapons) {
-        //implement this
+        return null;
     }
 
     public int[] toSpeedArray(List<Weapon> weapons) {
-        //implement this
+        return null;
     }
 
     public int sumUpValues(List<Weapon> weapons) {
-        //implement this
+        return 0;
     }
 
     public long sumUpHashCodes(List<Weapon> weapons) {
-        //implement this
+        return 0;
     }
 
     public List<Weapon> removeDuplicates(List<Weapon> weapons) {
-        //implement this
+        return weapons;
     }
 
     public void increaseValuesByTenPercent(List<Weapon> weapons) {
         //implement this
-    }*/
+    }
 }
