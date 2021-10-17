@@ -1,43 +1,99 @@
-package UE1;
+package UE2;
+
+import UE1.Combattype;
+import UE1.Damagetype;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Weapon {
     private String name;
-    private Combattype cType;
-    private Damagetype dType;
+    private CombatType cType;
+    private DamageType dType;
     private int damage;
     private int speed;
     private int strength;
     private int value;
 
-    public Weapon(String name, Combattype cType, Damagetype dType, int damage, int speed, int strength, int value) {
+
+    public Weapon() {
+    }
+
+    public Weapon(String name, CombatType combatType0, DamageType damageType0, int damage, int speed, int strength, int value) {
         this.name = name;
-        this.cType = cType;
-        this.dType = dType;
+        this.cType = combatType0;
+        this.dType = damageType0;
         this.damage = damage;
         this.speed = speed;
         this.strength = strength;
         this.value = value;
     }
 
-    public Weapon() {
+    public String getName() {
+        return name;
     }
 
-    public List<Weapon> fileReader(File file){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CombatType getCombatType() {
+        return cType;
+    }
+
+    public void setcType(CombatType cType) {
+        this.cType = cType;
+    }
+
+    public DamageType getDamageType() {
+        return dType;
+    }
+
+    public void setdType(DamageType dType) {
+        this.dType = dType;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getMinStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public List<UE1.Weapon> fileReader(File file){
         try {
-            List<Weapon> list = Files.lines(new File("weapons.csv").toPath())
+            List<UE1.Weapon> list = Files.lines(new File("weapons.csv").toPath())
                     .skip(1)
                     .map(s -> s.split(";"))
-                    .map(s -> new Weapon(
+                    .map(s -> new UE1.Weapon(
                             s[0],
                             Combattype.valueOf(s[1]),
                             Damagetype.valueOf(s[2]),
@@ -69,61 +125,5 @@ public class Weapon {
     @Override
     public String toString() {
         return name+" "+cType.toString()+" "+dType.toString()+" "+damage+" "+speed+" "+strength+" "+value;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Combattype getcType() {
-        return cType;
-    }
-
-    public Damagetype getdType() {
-        return dType;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setcType(Combattype cType) {
-        this.cType = cType;
-    }
-
-    public void setdType(Damagetype dType) {
-        this.dType = dType;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
     }
 }

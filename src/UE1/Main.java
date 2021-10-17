@@ -18,22 +18,40 @@ public class Main {
         };
 
         Comparator<Weapon> comparatorDamage = (w1, w2) -> {
-            return w2.getDamage()-w1.getDamage();
+            return w2.getDamage() - w1.getDamage();
         };
 
         Comparator<Weapon> comparatorNameLength = (w1, w2) -> {
-            return w2.getName().length()-w1.getName().length();
+            return w2.getName().length() - w1.getName().length();
         };
 
         Comparator<Weapon> comparatorDamageT = (w1, w2) -> {
             return w1.getdType().compareTo(w2.getdType());
         };
 
+
         Weapon weapon = new Weapon();
-        ArrayList<Weapon> weaponList = weapon.fileReader(new File("C:\\Schule\\2021-22 KoglerD190073\\POS\\Uebungen\\KoglerD_UE3_04.10.21\\UE3_KoglerD\\weapons.csv"));
+        List<Weapon> weaponList = weapon.fileReader(new File("C:\\Schule\\2021-22 KoglerD190073\\POS\\Uebungen\\KoglerD_UE3_04.10.21\\UE3_KoglerD\\weapons.csv"));
 
+        Printable printable = printableP();
+        printable.print(weaponList);
 
+    }
 
+    public static Comparator<Weapon> comparatorAll() {
+        Comparator<Weapon> comparatorAll = (w1, w2) -> {
+            if (w1.getcType().compareTo(w2.getcType()) == 0) {
+                if (w1.getDamage() - w2.getDamage() == 0) {
+                    return w1.getName().compareTo(w2.getName());
+                }
+                return w1.getDamage() - w2.getDamage();
+            }
+            return w1.getcType().compareTo(w2.getcType());
+        };
+        return comparatorAll;
+    }
+
+    public static Printable printableP() {
         Printable printable = w -> {
             int namelengthMax = 0;
             int dTypelengthMax = 0;
@@ -42,7 +60,7 @@ public class Main {
             int speedlengthMax = 0;
             int strengthlengthMax = 0;
             int valuelengthMax = 0;
-            w.sort(comparatorName);
+            w.sort(comparatorAll());
 
 
             for (Weapon we : w) {
@@ -85,15 +103,15 @@ public class Main {
             List<String> valueList = new ArrayList<>();
 
 
-            for (Weapon we  :w) {
+            for (Weapon we : w) {
                 damageString = String.valueOf(we.getDamage());
-                while (damageString.length() <= damagelengthMax){
+                while (damageString.length() <= damagelengthMax) {
                     damageString += " ";
                 }
                 damageString += "|";
                 damageList.add(damageString);
                 nameString = String.valueOf(we.getName());
-                while (nameString.length() <= namelengthMax){
+                while (nameString.length() <= namelengthMax) {
                     nameString += " ";
                 }
                 nameString += "|";
@@ -101,52 +119,50 @@ public class Main {
                 nameList.add(nameString);
 
                 cTypeString = String.valueOf(we.getcType());
-                while (cTypeString.length() <= cTypelengthMax){
+                while (cTypeString.length() <= cTypelengthMax) {
                     cTypeString += " ";
                 }
                 cTypeString += "|";
                 cTypeList.add(cTypeString);
 
                 dTypeString = String.valueOf(we.getdType());
-                while (dTypeString.length() <= dTypelengthMax){
+                while (dTypeString.length() <= dTypelengthMax) {
                     dTypeString += " ";
                 }
                 dTypeString += "|";
                 dTypeList.add(dTypeString);
 
                 strengthString = String.valueOf(we.getStrength());
-                while (strengthString.length() <= strengthlengthMax){
+                while (strengthString.length() <= strengthlengthMax) {
                     strengthString += " ";
                 }
                 strengthString += "|";
                 strengthList.add(strengthString);
 
                 speedString = String.valueOf(we.getSpeed());
-                while (speedString.length() <= speedlengthMax){
+                while (speedString.length() <= speedlengthMax) {
                     speedString += " ";
                 }
                 speedString += "|";
                 speedList.add(speedString);
 
                 valueString = String.valueOf(we.getValue());
-                while (valueString.length() <= valuelengthMax){
+                while (valueString.length() <= valuelengthMax) {
                     valueString += " ";
                 }
                 valueString += "|";
                 valueList.add(valueString);
             }
             for (int i = 0; i < valueList.size(); i++) {
-                System.out.println(nameList.get(i)+dTypeList.get(i)+cTypeList.get(i)+damageList.get(i)+speedList.get(i)+strengthList.get(i)+valueList.get(i));
+                System.out.println(nameList.get(i) + dTypeList.get(i) + cTypeList.get(i) + damageList.get(i) + speedList.get(i) + strengthList.get(i) + valueList.get(i));
             }
-
-
-
-
         };
+        return printable;
+    }
 
-        printable.print(weaponList);
-
-        /*Printable printable = w -> {
+    /*
+    Was in der Main war:
+    Printable printable = w -> {
             w.sort(comparatorName);
 
             for (Weapon we : w) {
@@ -175,8 +191,4 @@ public class Main {
             }
             System.out.println("____________________________________");
         };*/
-
-    }
-
-
 }

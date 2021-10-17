@@ -1,6 +1,7 @@
-package UE1;
+package UE2;
 
-import java.util.ArrayList;
+import UE1.Weapon;
+
 import java.util.List;
 
 public interface Printable {
