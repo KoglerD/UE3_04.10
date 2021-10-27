@@ -21,6 +21,13 @@ public class UE2MainTest {
     }
 
     @Test
+    public void testAverageTestNums2(){
+        int[] a = {1, 2, 3,4,5,6};
+        double averageResult = UE2Main.average(a);
+        assertEquals(averageResult, 3.5);
+    }
+
+    @Test
     public void testAverageTestNumsSame(){
         int[] a = {3, 3, 3, 3};
         double averageResult = UE2Main.average(a);

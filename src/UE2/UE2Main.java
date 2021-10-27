@@ -1,10 +1,9 @@
 package UE2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class UE2Main {
@@ -12,22 +11,28 @@ public class UE2Main {
         Random r = new Random();
         int[] array = new int[10000];
         for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt(100-0);
+            array[i] = r.nextInt(101-0);
             //System.out.println(array[i]);
         }
         String[] randomStrings = new String[10];
         for (int i = 0; i < randomStrings.length; i++) {
             randomStrings[i] = randomString();
-            //System.out.println(array[i]);
+            //System.out.println(randomStrings[i]);
         }
+        System.out.println(average(new int[]{1,2,3,4,5,6}));
     }
 
     public static double average(int[] numbers){
-        double sum = 0;
+        return IntStream.of(numbers).average().getAsDouble();
+
+
+        /*double sum = 0;
         for (int i = 0; i < numbers.length; i++) {
             sum += numbers[i];
         }
         return sum/numbers.length;
+
+        double[] numbersD = Arrays.stream(numbers).asDoubleStream().toArray();*/
     }
 
     public static String randomString() {
@@ -40,9 +45,7 @@ public class UE2Main {
 
             // generate a random number between
             // 0 to AlphaNumericString variable length
-            int index
-                    = (int)(AlphaNumericString.length()
-                    * Math.random());
+            int index= (int)(AlphaNumericString.length()* Math.random());
 
             // add Character one by one in end of sb
             sb.append(AlphaNumericString

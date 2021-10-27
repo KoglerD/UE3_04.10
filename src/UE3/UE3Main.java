@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 public class UE3Main {
     final static Predicate<Integer> isEven = integer -> integer%2 ==0;
     final static IntPredicate isPositive = value -> value >= 0;
-    final static Predicate<String> isShortWord = s -> isEven.test(s.length())&&s.length()<4;
+    final static Predicate<String> isShortWord = s -> s.split(" ").length < 4;
     public static void main(String[] args) {
         System.out.println("Is Even: "+isEven.test(2));
         System.out.println("Is Even: "+isEven.test(3));
