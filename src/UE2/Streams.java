@@ -112,12 +112,17 @@ public class Streams {
 
     public int sumUpValues(List<Weapon> weapons) {
         //weapons.stream().forEach(weapon -> list.add(weapon.getValue()));
+        if (weapons.isEmpty()){
+            return 0;
+        }
         return weapons.stream().mapToInt(weapon -> weapon.getValue()).sum();
 
     }
 
     public long sumUpHashCodes(List<Weapon> weapons) {
-        return weapons.stream().mapToLong(weapon -> weapon.hashCode()).sum();
+        //weapons.stream().mapToLong(weapon -> weapon.hashCode()).sum();
+        //long l = weapons.stream().mapToLong(weapon -> weapon.hashCode()).reduce(0, Long::sum);
+        return weapons.stream().mapToInt(weapon -> weapon.hashCode()).sum();
     }
 
     public List<Weapon> removeDuplicates(List<Weapon> weapons) {
